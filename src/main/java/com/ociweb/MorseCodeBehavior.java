@@ -25,6 +25,8 @@ public class MorseCodeBehavior implements TimeListener, DigitalListener {
 			buttonPressed = value;
 		}
 	}
+	
+	@Override
 	public void timeEvent(long time, int iteration) {
 		buzzerChannel.setValue(buzzerPort, buttonPressed);
 	}
