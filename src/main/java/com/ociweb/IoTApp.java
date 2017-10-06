@@ -25,6 +25,6 @@ public class IoTApp implements FogApp {
 
     @Override
     public void declareBehavior(FogRuntime runtime) {
-    	runtime.registerListener(new BuzzerBehavior(runtime, BUZZER_PORT, BUTTON_PORT)); 
+    	runtime.registerListener(new MorseCodeBehavior(runtime, BUZZER_PORT, BUTTON_PORT)); 
     }  
 }

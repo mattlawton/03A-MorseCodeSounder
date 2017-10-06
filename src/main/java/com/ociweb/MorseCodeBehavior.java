@@ -6,7 +6,7 @@ import com.ociweb.iot.maker.FogCommandChannel;
 import com.ociweb.iot.maker.FogRuntime;
 import com.ociweb.iot.maker.Port;
 
-public class BuzzerBehavior implements TimeListener, DigitalListener {
+public class MorseCodeBehavior implements TimeListener, DigitalListener {
 
 	private final FogCommandChannel buzzerChannel;
 	private final Port buzzerPort;
@@ -14,7 +14,7 @@ public class BuzzerBehavior implements TimeListener, DigitalListener {
 
 	private int buttonPressed = 0;
 
-	public BuzzerBehavior(FogRuntime runtime, Port buzzerPort, Port buttonPort) {
+	public MorseCodeBehavior(FogRuntime runtime, Port buzzerPort, Port buttonPort) {
 		this.buzzerChannel = runtime.newCommandChannel(FogRuntime.PIN_WRITER);
 		this.buzzerPort = buzzerPort;
 		this.buttonPort = buttonPort;
