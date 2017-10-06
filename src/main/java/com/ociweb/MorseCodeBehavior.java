@@ -1,11 +1,12 @@
 package com.ociweb;
 
+import com.ociweb.gl.api.ShutdownListener;
 import com.ociweb.iot.maker.DigitalListener;
 import com.ociweb.iot.maker.FogCommandChannel;
 import com.ociweb.iot.maker.FogRuntime;
 import com.ociweb.iot.maker.Port;
 
-public class MorseCodeBehavior implements DigitalListener {
+public class MorseCodeBehavior implements DigitalListener, ShutdownListener {
 
 	private final FogCommandChannel buzzerChannel;
 	private final Port buzzerPort;
@@ -22,6 +23,12 @@ public class MorseCodeBehavior implements DigitalListener {
 		if (port == buttonPort) {
 			buzzerChannel.setValue(buzzerPort, value);
 		}
+	}
+
+	@Override
+	public boolean acceptShutdown() {
+		buzzerChannel.setValue(buzzerPort, 0);
+		return true;
 	}
 
 }
