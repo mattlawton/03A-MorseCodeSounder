@@ -20,8 +20,18 @@ public class MorseCodeBehavior implements DigitalListener, ShutdownListener {
 
 	@Override
 	public void digitalEvent(Port port, long time, long duration, int value) {
+		// Make sure the port calling this method is the port we want, the port we
+		// assigned to the button
 		if (port == buttonPort) {
 			buzzerChannel.setValue(buzzerPort, value);
+			// When the button is pushed down, the value is 1. Otherwise, the value is zero
+			if (value == 1) {
+				// Display console output "Buzzer pressed" when the button's value is 1
+				System.out.println("Buzzer pressed.");
+				// If the value is not 1, the button must have been released
+			} else {
+				System.out.println("Button released.");
+			}
 		}
 	}
 
